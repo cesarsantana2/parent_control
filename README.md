@@ -29,27 +29,30 @@ A arquitetura utilizada neste projeto é chamada de **diplomatas**. Nela, a apli
 ### Code Structure
 
 ```
+.
 ├── parent_control
-│ ├── adapters
-│ │ └── mac_rule_adapter.py
-│ ├── controllers
-│ │ └── apply_rule_controller.py
-│ ├── diplomat
-│ │ ├── http
-│ │ │ └── flask_handler.py
-│ │ └── client
-│ │ └── pyhole_client.py
-│ ├── models
-│ │ ├── mac_rule.py
-│ │ ├── rule_status.py
-│ │ ├── request_context.py
-│ │ └── pyhole_response.py
-│ ├── wire
-│ │ ├── in
-│ │ │ └── apply_mac_rule_request.py
-│ │ └── out
-│ │ └── apply_mac_rule_response.py
-│ └── main.py
+│   ├── README.md
+│   └── src
+│       ├── adapters
+│       │   └── mac_rule_adapter.py
+│       ├── controllers
+│       │   └── apply_rule_controller.py
+│       ├── diplomat
+│       │   ├── http
+│       │   │   └── flask_handler.py
+│       │   └── client
+│       │       └── pyhole_client.py
+│       ├── models
+│       │   ├── mac_rule.py
+│       │   ├── rule_status.py
+│       │   ├── request_context.py
+│       │   └── pyhole_response.py
+│       ├── wire
+│       │   ├── in
+│       │   │   └── apply_mac_rule_request.py
+│       │   └── out
+│       │       └── apply_mac_rule_response.py
+│       └── main.py
 ```
 
 
