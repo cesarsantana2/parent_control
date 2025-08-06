@@ -2,8 +2,6 @@
 
 Sistema de **controle parental inteligente** para redes domésticas, que permite aplicar regras de bloqueio e liberação de conteúdo para cada dispositivo conectado à rede, com base no endereço MAC. Este repositório é o **esqueleto (scaffold)** inicial do projeto e segue a **arquitetura de diplomatas**.
 
-> ✅ Ideal para ser usado como base em projetos de TCC. Este repositório foi criado para ser **forkado**, estudado e estendido.
-
 ---
 
 ## 📚 Objetivo do Projeto
@@ -21,10 +19,26 @@ As regras são aplicadas em um servidor **Pi-hole** ou equivalente (como um wrap
 
 ---
 
-## 🧱 Arquitetura: Diplomatas
+## 🧱 Sobre a Arquitetura de Diplomatas
 
-A arquitetura utilizada neste projeto é chamada de **diplomatas**. Nela, a aplicação é dividida em camadas bem definidas que se comunicam entre si via modelos de dados. Isso favorece testes, manutenção e clareza de propósito.
+Este projeto segue a arquitetura de diplomatas, que organiza o código em camadas bem definidas para facilitar leitura, manutenção, testes e extensão.
 
+Cada componente tem uma responsabilidade específica:
+
+`diplomat`\
+Responsável pela comunicação com o mundo externo. Pode incluir entrada (como handlers HTTP) e saída (como chamadas para APIs externas, bancos de dados, etc.). É o "embaixador" da aplicação para o exterior.
+
+`wire/in` e `wire/out`\
+Define os contratos de entrada e saída da aplicação. Tudo que entra via Diplomat é validado e convertido com base nos schemas de wire/in. Tudo que sai da aplicação é formatado usando os schemas de wire/out.
+
+`adapters`\
+Realizam a transformação dos dados entre os formatos externos (wire) e os modelos internos (models/). Também podem aplicar validações ou mapeamentos específicos.
+
+`models`\
+Contém os modelos de dados internos que trafegam entre as camadas da aplicação. Representam a forma canônica dos dados usados na lógica de negócio.
+
+`controllers`\
+Responsáveis pela orquestração da lógica de negócio. Recebem dados processados pelos adapters, tomam decisões e, quando necessário, acionam os diplomatas para interagir com sistemas externos.
 
 ### Code Structure
 
